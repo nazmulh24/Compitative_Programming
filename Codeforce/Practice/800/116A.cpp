@@ -1,24 +1,17 @@
 /***********************************************************************
 
-Name --> A. Find Minimum Operations
-Link --> https://codeforces.com/problemset/problem/2020/A
+Name --> A. Tram
+Link --> https://codeforces.com/problemset/problem/116/A
 
-Input -->
-6
-5 2
-3 5
-16 4
-100 3
-6492 10
-10 1
+Input-->
+4
+0 3
+2 5
+4 2
+4 0
 
 Output-->
-2
-3
-1
-4
-21
-10
+6
 
 ***********************************************************************/
 
@@ -42,24 +35,23 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
-    if (k == 1)
+    int a[n], b[n];
+
+    int mp = INT_MIN;
+    int tp = 0;
+
+    for (int i = 0; i < n; i++)
     {
-        cout << n << endl;
-        return;
+        cin >> a[i] >> b[i];
+
+        tp += (+b[i] - a[i]);
+        mp = max(mp, tp);
     }
 
-    int cnt = 0;
-
-    while (n > 0)
-    {
-        cnt += n % k;
-        n = n / k;
-    }
-
-    cout << cnt << endl;
+    cout << mp << endl;
 }
 
 int32_t main()
@@ -68,7 +60,7 @@ int32_t main()
     cin.tie(0);
 
     int t = 1;
-    cin >> t; // Uncomment if multiple test cases
+    // cin >> t; // Uncomment if multiple test cases
 
     while (t--)
     {

@@ -1,24 +1,27 @@
 /***********************************************************************
 
-Name --> A. Find Minimum Operations
-Link --> https://codeforces.com/problemset/problem/2020/A
+Name --> A. Nearly Lucky Number
+Link --> https://codeforces.com/problemset/problem/110/A
 
-Input -->
-6
-5 2
-3 5
-16 4
-100 3
-6492 10
-10 1
+Input-->
+    40047
 
 Output-->
-2
-3
-1
-4
-21
-10
+    NO
+
+
+Input-->
+    7747774
+
+Output-->
+    YES
+
+
+Input-->
+    1000000000000000000
+
+Output-->
+    NO
 
 ***********************************************************************/
 
@@ -42,24 +45,21 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-
-    if (k == 1)
-    {
-        cout << n << endl;
-        return;
-    }
+    string n;
+    cin >> n;
 
     int cnt = 0;
 
-    while (n > 0)
+    for (int i = 0; i < n.size(); i++)
     {
-        cnt += n % k;
-        n = n / k;
+        if (n[i] == '4' || n[i] == '7')
+            cnt++;
     }
 
-    cout << cnt << endl;
+    if (cnt == 4 || cnt == 7)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
 
 int32_t main()
@@ -68,7 +68,7 @@ int32_t main()
     cin.tie(0);
 
     int t = 1;
-    cin >> t; // Uncomment if multiple test cases
+    // cin >> t; // Uncomment if multiple test cases
 
     while (t--)
     {
