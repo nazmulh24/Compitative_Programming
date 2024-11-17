@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"/Users/nazmul/Documents/CP/Compitative_Programming/V_Judge/XPSC-05/PC_3_Div_4/B.cpp","tests":[{"id":1731337566969,"input":"3\n4 5 7\n3 1 2\n5 2 6","output":"20\n3\n14"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/nazmul/Documents/CP/Compitative_Programming/V_Judge/XPSC-05/PC_3_Div_4/B.cpp","group":"local","local":true}
