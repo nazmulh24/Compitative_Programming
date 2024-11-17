@@ -1,7 +1,7 @@
 /***********************************************************************
 
-Name --> F - Binary Conversion
-Link --> https://vjudge.net/contest/667724#problem/F
+Name --> E - EVacuate to Moon
+Link --> https://vjudge.net/contest/670883#problem/E
 
 Example-->
 
@@ -12,6 +12,8 @@ Example-->
 using namespace std;
 
 #define int long long
+#define no cout << "NO" << '\n'
+#define yes cout << "YES" << '\n'
 #define endl '\n'
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -22,50 +24,48 @@ using namespace std;
 #define mt make_tuple
 #define fi first
 #define se second
-#define rep(i, a, b) for (int i = (a); i < (b); ++i)
-#define per(i, a, b) for (int i = (b) - 1; i >= (a); --i)
+#define forl(i, a, b) for (int i = (a); i < (b); ++i)
+#define rfor(i, b, a) for (int i = (b); i >= (a); --i)
 #define trav(a, x) for (auto &a : x)
 #define UNIQUE(v) v.erase(unique(all(v)), v.end())
 //********************************************************************
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n, m, h;
+    cin >> n >> m >> h;
 
-    string s, t;
-    cin >> s >> t;
+    vector<int> a(n), b(m);
 
-    reverse(s.begin(), s.end());
-
-    for (int j = 0; j < k; ++j)
+    forl(i, 0, n)
     {
-        int carry = 1;
-
-        for (int i = 0; i < n; ++i)
-        {
-            if (carry == 0)
-                break;
-
-            if (s[i] == '0')
-            {
-                s[i] = '1';
-                carry = 0;
-            }
-            else
-            {
-                s[i] = '0';
-                carry = 1;
-            }
-        }
-
-        if (carry == 1)
-            s.pb('1');
+        cin >> a[i];
+    }
+    forl(i, 0, m)
+    {
+        cin >> b[i];
     }
 
-    reverse(s.begin(), s.end());
+    sort(rall(a));
+    sort(rall(b));
 
-    cout << s << " " << t << endl;
+    int l = 0, r = 0, ans = 0;
+
+    while (r < m && l < n)
+    {
+        int x = b[r] * h;
+
+        if (x <= a[l])
+            ans += x;
+        else
+            ans += a[l];
+
+        r++;
+        l++;
+    }
+
+    cout << ans << endl
+         << endl;
 }
 
 int32_t main()

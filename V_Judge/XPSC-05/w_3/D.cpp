@@ -1,7 +1,7 @@
 /***********************************************************************
 
-Name --> A - International Justice Day
-Link --> https://vjudge.net/contest/667724#problem/A
+Name --> D - Alt-Tab
+Link -->
 
 Example-->
 
@@ -12,6 +12,8 @@ Example-->
 using namespace std;
 
 #define int long long
+#define no cout << "NO" << '\n'
+#define yes cout << "YES" << '\n'
 #define endl '\n'
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -22,21 +24,44 @@ using namespace std;
 #define mt make_tuple
 #define fi first
 #define se second
-#define rep(i, a, b) for (int i = (a); i < (b); ++i)
-#define per(i, a, b) for (int i = (b) - 1; i >= (a); --i)
+#define forl(i, a, b) for (int i = (a); i < (b); ++i)
+#define rfor(i, b, a) for (int i = (b); i >= (a); --i)
 #define trav(a, x) for (auto &a : x)
 #define UNIQUE(v) v.erase(unique(all(v)), v.end())
 //********************************************************************
 
 void solve()
 {
-    int x, y;
-    cin>>x>>y;
+    int n;
+    cin >> n;
 
-    if (x >= y)
-        cout << "YES" << endl;
-    else
-        cout << "NO" << endl;
+    stack<string> s;
+
+    forl(i, 0, n)
+    {
+        string ss;
+        cin >> ss;
+
+        s.push(ss);
+    }
+
+    set<string> ans;
+
+    while (!s.empty())
+    {
+        if (ans.find(s.top()) == ans.end())
+        {
+            ans.insert(s.top());
+            string prnt = s.top();
+
+            if (prnt.size() > 2)
+                cout << prnt.substr(prnt.size() - 2);
+        }
+
+        s.pop();
+    }
+
+    cout << endl;
 }
 
 int32_t main()

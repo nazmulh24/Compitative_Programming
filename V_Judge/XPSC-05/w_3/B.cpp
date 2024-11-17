@@ -1,6 +1,6 @@
 /***********************************************************************
 
-Name --> D - Change Please
+Name --> B - Range Minimize
 Link -->
 
 Example-->
@@ -12,6 +12,8 @@ Example-->
 using namespace std;
 
 #define int long long
+#define no cout << "NO" << '\n'
+#define yes cout << "YES" << '\n'
 #define endl '\n'
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -22,37 +24,38 @@ using namespace std;
 #define mt make_tuple
 #define fi first
 #define se second
-#define rep(i, a, b) for (int i = (a); i < (b); ++i)
-#define per(i, a, b) for (int i = (b) - 1; i >= (a); --i)
+#define forl(i, a, b) for (int i = (a); i < (b); ++i)
+#define rfor(i, b, a) for (int i = (b); i >= (a); --i)
 #define trav(a, x) for (auto &a : x)
 #define UNIQUE(v) v.erase(unique(all(v)), v.end())
 //********************************************************************
 
 void solve()
 {
-    int x;
-    cin >> x;
+    int n;
+    cin >> n;
 
-    if (x > 90 && x <= 100)
+    vector<int> v(n);
+    forl(i, 0, n)
+    {
+        cin >> v[i];
+    }
+
+    sort(all(v));
+
+    if (n == 3)
+    {
         cout << 0 << endl;
-    else if (x > 80 && x <= 90)
-        cout << 10 << endl;
-    else if (x > 70 && x <= 80)
-        cout << 20 << endl;
-    else if (x > 60 && x <= 70)
-        cout << 30 << endl;
-    else if (x > 50 && x <= 60)
-        cout << 40 << endl;
-    else if (x > 40 && x <= 50)
-        cout << 50 << endl;
-    else if (x > 30 && x <= 40)
-        cout << 60 << endl;
-    else if (x > 20 && x <= 30)
-        cout << 70 << endl;
-    else if (x > 10 && x <= 20)
-        cout << 80 << endl;
-    else if (x > 0 && x <= 10)
-        cout << 90 << endl;
+        return;
+    }
+
+    int mn = INT_MAX;
+
+    mn = min(mn, (v[n - 1] - v[2]));
+    mn = min(mn, (v[n - 3] - v[0]));
+    mn = min(mn, (v[n - 2] - v[1]));
+
+    cout << mn << endl;
 }
 
 int32_t main()
